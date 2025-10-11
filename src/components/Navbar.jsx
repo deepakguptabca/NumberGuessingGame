@@ -10,7 +10,7 @@ const Navbar = ({ onResizerClick }) => {
         <div>
          
             <p className="cursor-pointer font-bold text-3xl text-purple-500">
-              Quick Resizer
+              INNOVELLA
             </p>
           
         </div>
