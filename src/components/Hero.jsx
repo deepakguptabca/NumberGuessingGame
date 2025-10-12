@@ -1,10 +1,13 @@
 import React from 'react'
-import { useState,useEffect } from 'react'
+import { useState,useEffect,useRef } from 'react'
 
 const Hero = () => {
   const [inputValue, setInputValue] = useState("");
   const [rand, setRand] = useState(0)
   const [help, setHelp] = useState("")
+  const audioRef = useRef(null);
+  const [song, setSong] = useState("")
+
 
   //for setting number in input box 
   const handleInputChange = (e) => {
@@ -15,15 +18,19 @@ console.log(rand)
   const handleGuess = (e) => {
     e.preventDefault();
     if(inputValue == rand){
-      setHelp("Hurray! You guessed it right")
+      setHelp("Hurray! You guessed it right   🎉")
+      setSong("/win.mp3")
     }
     else if(inputValue === ""){
-      setHelp("Please enter a number")
+      setHelp("Please enter a number !!")
+      setSong("/no.mp3")
     }
     else if(inputValue > rand){
-      setHelp("Try a smaller number")
+      setHelp("Try a smaller number ⬇️")
+      setSong("/no.mp3")
     }else{
-      setHelp("Try a larger number")
+      setHelp("Try a larger number ⬆️")
+      setSong("/no.mp3")
     }
     
   }
@@ -39,6 +46,13 @@ useEffect(() => {
   generateRandomNumber();
 }, [])
 
+ // Play audio when song changes
+  useEffect(() => {
+    if(song && audioRef.current){
+      audioRef.current.src = song;
+      audioRef.current.play();
+    }
+  }, [song])
 
 
 
@@ -72,11 +86,11 @@ useEffect(() => {
 
       
         {/* helping to guess no */}
-       <div className='text-2xl m-6 text-center text-green-400'>
+       <div className='text-2xl m-6 text-center font-bold text-green-800'>
           {help}
         </div>
 
-
+<audio ref={audioRef} />
     </div>
   )
 }
