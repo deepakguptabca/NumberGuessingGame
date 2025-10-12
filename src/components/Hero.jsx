@@ -17,6 +17,9 @@ console.log(rand)
     if(inputValue == rand){
       setHelp("Hurray! You guessed it right")
     }
+    else if(inputValue === ""){
+      setHelp("Please enter a number")
+    }
     else if(inputValue > rand){
       setHelp("Try a smaller number")
     }else{
@@ -41,32 +44,35 @@ useEffect(() => {
 
   return (
 
-    <div className=' m-2'>
+    <div className=''>
+      
 
       <p className='text-3xl font-bold text-center  m-4'>
         Number Guessing Game
       </p>
 
 
-      <div className='flex justify-center items-center gap-10'>
+      <div className='flex justify-center items-center'>
 
         {/* input box and button  */}
         <form action="submit" onSubmit={handleGuess}>
-          <input placeholder='Enter a Number 0 to 50'
-            className='border w-100 h-12 p-2 text-xl '
+          <input placeholder='Enter a Number 1 to 50'
+            className='border m-10 rounded-xl w-100 h-12 p-4 text-xl '
             type="number"
+            min={1}
+            max={50}
             value={inputValue}
             onChange={handleInputChange}
             name="number"
             id="number" />
-          <button className='border cursor-pointer bg-blue-500 text-white w-20 h-12 m-2' type="submit">Guess</button>
+          <button className='border text-xl rounded-xl cursor-pointer bg-purple-500 text-white w-20 p-2 h-12 m-2' type="submit">Guess</button>
         </form>
       </div>
 
 
       
         {/* helping to guess no */}
-       <div className='text-xl text-center text-green-400'>
+       <div className='text-2xl m-6 text-center text-green-400'>
           {help}
         </div>
 

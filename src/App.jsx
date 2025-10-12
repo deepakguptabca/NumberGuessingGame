@@ -2,11 +2,13 @@ import React from 'react'
 import './App.css'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
+import Banner from './components/Banner'
 const App = () => {
   return (
     <div>
       <Navbar/>
       <Hero/>
+      <Banner/>
     </div>
   )
 }
