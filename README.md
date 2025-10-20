@@ -6,4 +6,4 @@
 
 ## Project Link 
 
-```[Link]  (https://number-guessing-game-pink-two.vercel.app/)  ```
+```[Link](https://number-guessing-game-pink-two.vercel.app/)  `[Link](https://number-guessing-game-pink-two.vercel.app/)` ```
